@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [MainController::class, 'index']);
+
+Route::get('/categories', [MainController::class, 'categories']);
+Route::get('/{category}', [MainController::class, 'category']);
+
+Route::get('/mobiles/{product?}', [MainController::class, 'product']);
