@@ -11,15 +11,23 @@
 
             <p>{{ $product->price }} руб.</p>
 
-            <p>
+            <div>
                 <h4>{{ $product->category->name }}</h4>
                 <hr>
-            <form action="{{ route('basket') }}" method="POST">
-                <button type="submit" class="btn btn-primary" role="button">В корзину</button>
-                <a href="{{route('product', [$product->category->code, $product->code])}}" class="btn btn-default" role="button">Подробнее</a>
-                <input type="hidden" name="_token" value="kl4dkt26jzaasYQBTpBYO9myFLI2ewKz22h3ZOix">
-            </form>
-            </p>
+                <div class="row justify-content-start">
+                    <div class="col-sm-6">
+                        <form action="{{ route('basked-add', $product) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-primary" role="button">В корзину</button>
+                        </form>
+                    </div>
+                    <div class="col-sm-6">
+                        <a href="{{ route('product', [$product->category->code, $product->code]) }}"
+                            class="btn btn-default" role="button">Подробнее</a>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 </div>
