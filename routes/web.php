@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\BasketController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,11 +17,15 @@ use App\Http\Controllers\MainController;
 
 Route::get('/', [MainController::class, 'index'])->name('index');
 
-Route::get('/basket', [MainController::class, 'basket'])->name('basket');
+Route::get('/basket', [BasketController::class, 'basket'])->name('basket');
 
-Route::get('/basket/order', [MainController::class, 'basketOrder'])->name('basket-order');
+Route::get('/basket/order', [BasketController::class, 'basketOrder'])->name('basket-order');
 
 Route::get('/categories', [MainController::class, 'categories'])->name('categories');
 Route::get('/{category}', [MainController::class, 'category'])->name('category');
 
 Route::get('/{category}/{product}', [MainController::class, 'product'])->name('product');
+
+Route::post('/basket/add/{productId}', [BasketController::class, 'baskerdAdd'])->name('basked-add');
+
+Route::post('/basket/remove/{productId}', [BasketController::class, 'baskedRemove'])->name('basked-remove');
