@@ -20,6 +20,7 @@ Route::get('/', [MainController::class, 'index'])->name('index');
 Route::get('/basket', [BasketController::class, 'basket'])->name('basket');
 
 Route::get('/basket/order', [BasketController::class, 'basketOrder'])->name('basket-order');
+Route::post('/basket/order', [BasketController::class, 'basketConfirm'])->name('basket-confirm');
 
 Route::get('/categories', [MainController::class, 'categories'])->name('categories');
 Route::get('/{category}', [MainController::class, 'category'])->name('category');
