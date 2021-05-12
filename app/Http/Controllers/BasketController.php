@@ -62,6 +62,7 @@ class BasketController extends Controller
         } else {
             $order->products()->attach($productId);
         }
+        session()->flash('success', 'Товар добавлен');
         return redirect()->route('basket');
     }
 
@@ -80,6 +81,10 @@ class BasketController extends Controller
             $pivotRow->count--;
             $pivotRow->update();
         }
+        if ($order->count < 1) {
+            session()->forget('orderId');
+        }
+        session()->flash('warning', 'Товар удалён');
         return redirect()->route('basket');
     }
 }
