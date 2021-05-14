@@ -15,6 +15,13 @@ use App\Http\Controllers\BasketController;
 |
 */
 
+Auth::routes([
+    'reset' => false,
+    'confirm' => false,
+    'verify' => false,
+
+]);
+
 Route::get('/', [MainController::class, 'index'])->name('index');
 
 Route::get('/basket', [BasketController::class, 'basket'])->name('basket');
@@ -30,7 +37,3 @@ Route::get('/{category}/{product}', [MainController::class, 'product'])->name('p
 Route::post('/basket/add/{productId}', [BasketController::class, 'baskerdAdd'])->name('basked-add');
 
 Route::post('/basket/remove/{productId}', [BasketController::class, 'baskedRemove'])->name('basked-remove');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
