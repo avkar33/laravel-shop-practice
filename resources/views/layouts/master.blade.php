@@ -48,8 +48,20 @@
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/login">Войти</a></li>
-
+                    @guest
+                        <li><a href="{{ route('login') }}">Войти</a></li>
+                    @endguest
+                    @auth
+                    <li class="nav-item">
+                        <a href="{{ route('home') }}">Панель администраторы</a>
+                    </li>
+                    <li class="nav-item"> 
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit">Выйти</button>
+                        </form>
+                    </li>
+                    @endauth
                 </ul>
             </div>
         </div>
@@ -57,10 +69,10 @@
     <div class="container">
         <div class="starter-template">
             @if (session()->has('success'))
-                <p class="alert alert-success">{{session()->get('success')}}</p>
+                <p class="alert alert-success">{{ session()->get('success') }}</p>
             @endif
             @if (session()->has('warning'))
-                <p class="alert alert-warning">{{session()->get('warning')}}</p>
+                <p class="alert alert-warning">{{ session()->get('warning') }}</p>
             @endif
             @yield('content')
         </div>
