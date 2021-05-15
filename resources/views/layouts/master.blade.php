@@ -50,10 +50,11 @@
                 <ul class="nav navbar-nav navbar-right">
                     @guest
                         <li><a href="{{ route('login') }}">Войти</a></li>
+                        <li><a href="{{ route('register') }}">Регистрация</a></li>
                     @endguest
                     @auth
                     <li class="nav-item">
-                        <a href="{{ route('home') }}">Панель администраторы</a>
+                        <a href="{{ route('dashboard') }}">Панель администраторы</a>
                     </li>
                     <li class="nav-item"> 
                         <form action="{{ route('logout') }}" method="POST">
