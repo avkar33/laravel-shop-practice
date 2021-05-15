@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Product;
+use App\Models\User;
 
 class Order extends Model
 {
@@ -24,16 +25,22 @@ class Order extends Model
         return $sum;
     }
 
-    public function saveOrder($name, $phone)
+    public function saveOrder($name, $phone, $userId = 0)
     {
         if ($this->status == 0) {
             $this->name = $name;
             $this->phone = $phone;
+            $this->user_id = $userId;
             $this->save();
             session()->forget('orderId');
             return true;
         } else {
             return false;
         }
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

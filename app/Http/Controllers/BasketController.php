@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BasketController extends Controller
 {
@@ -37,7 +38,13 @@ class BasketController extends Controller
             return redirect()->route('basket');
         }
         $order = Order::find($orderId);
-        $success = $order->saveOrder($request->name, $request->phone);
+
+        if (Auth::check()) {
+            $user = Auth::user();
+            $success = $order->saveOrder($request->name, $request->phone, $user->id);
+        } else {
+            $success = $order->saveOrder($request->name, $request->phone);
+        }
         if ($success) {
             session()->flash('success', 'Заказ оформлен');
         } else {
