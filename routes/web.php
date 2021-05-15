@@ -31,16 +31,25 @@ Route::group(['middleware' => 'auth'], function () {
     });
 });
 
-Route::get('/basket', [BasketController::class, 'basket'])->name('basket');
 
-Route::get('/basket/order', [BasketController::class, 'basketOrder'])->name('basket-order');
-Route::post('/basket/order', [BasketController::class, 'basketConfirm'])->name('basket-confirm');
+Route::group(
+    ['prefix' => 'basket'],
+    function () {
+        Route::post('/add/{productId}', [BasketController::class, 'baskerdAdd'])->name('basked-add');
+        Route::post('/remove/{productId}', [BasketController::class, 'baskedRemove'])->name('basked-remove');
+        Route::post('/order', [BasketController::class, 'basketConfirm'])->name('basket-confirm');
+        Route::group(
+            ['middleware' => 'is_empty_basket',],
+            function () {
+                Route::get('/', [BasketController::class, 'basket'])->name('basket');
+                Route::get('/order', [BasketController::class, 'basketOrder'])->name('basket-order');
+            }
+        );
+    }
+);
+
+
 
 Route::get('/categories', [MainController::class, 'categories'])->name('categories');
 Route::get('/{category}', [MainController::class, 'category'])->name('category');
-
 Route::get('/{category}/{product}', [MainController::class, 'product'])->name('product');
-
-Route::post('/basket/add/{productId}', [BasketController::class, 'baskerdAdd'])->name('basked-add');
-
-Route::post('/basket/remove/{productId}', [BasketController::class, 'baskedRemove'])->name('basked-remove');
