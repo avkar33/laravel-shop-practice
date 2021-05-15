@@ -26,7 +26,9 @@ Auth::routes([
 Route::get('/', [MainController::class, 'index'])->name('index');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+    Route::group(['middleware' => 'is_admin'], function () {
+        Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+    });
 });
 
 Route::get('/basket', [BasketController::class, 'basket'])->name('basket');

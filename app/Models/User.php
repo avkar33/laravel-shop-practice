@@ -15,4 +15,9 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password'
     ];
+
+    public function isAdmin()
+    {
+        return $this->is_admin == 1;
+    }
 }
