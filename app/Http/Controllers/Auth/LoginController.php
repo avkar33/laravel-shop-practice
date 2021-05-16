@@ -23,7 +23,7 @@ class LoginController extends Controller
 
     public function redirectTo()
     {
-        return route('dashboard');
+        return route('index');
     }
     /**
      * Where to redirect users after login.
