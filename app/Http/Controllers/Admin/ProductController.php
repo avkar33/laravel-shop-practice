@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class ProductController extends Controller
 {
@@ -26,7 +27,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('auth.product.form');
+        $categories = Category::get();
+        return view('auth.product.form', ['categories' => $categories]);
     }
 
     /**
@@ -60,7 +62,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('auth.product.form', ['product' => $product]);
+        $categories = Category::get();
+        return view('auth.product.form', ['product' => $product, 'categories' => $categories]);
     }
 
     /**
