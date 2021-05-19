@@ -39,8 +39,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
 Route::group(
     ['prefix' => 'basket'],
     function () {
-        Route::post('/add/{productId}', [BasketController::class, 'baskerdAdd'])->name('basked-add');
-        Route::post('/remove/{productId}', [BasketController::class, 'baskedRemove'])->name('basked-remove');
+        Route::post('/add/{productId}', [BasketController::class, 'basketAdd'])->name('basket-add');
+        Route::post('/remove/{productId}', [BasketController::class, 'basketRemove'])->name('basket-remove');
         Route::post('/order', [BasketController::class, 'basketConfirm'])->name('basket-confirm');
         Route::group(
             ['middleware' => 'is_empty_basket',],

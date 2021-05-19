@@ -53,7 +53,7 @@ class BasketController extends Controller
         return redirect()->route('index');
     }
 
-    public function baskerdAdd($productId)
+    public function basketAdd($productId)
     {
         $orderId = session('orderId');
         if (is_null($orderId)) {
@@ -73,7 +73,7 @@ class BasketController extends Controller
         return redirect()->route('basket');
     }
 
-    public function baskedRemove($productId)
+    public function basketRemove($productId)
     {
         $orderId = session('orderId');
         if (is_null($orderId)) {

@@ -16,7 +16,7 @@
                 <hr>
                 <div class="row justify-content-start">
                     <div class="col-sm-6">
-                        <form action="{{ route('basked-add', $product) }}" method="POST">
+                        <form action="{{ route('basket-add', $product) }}" method="POST">
                             @csrf
                             <button type="submit" class="btn btn-primary" role="button">В корзину</button>
                         </form>
