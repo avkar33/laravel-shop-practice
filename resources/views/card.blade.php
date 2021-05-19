@@ -4,7 +4,7 @@
 
 
         </div>
-        <img src="{{Storage::url($product->image)}}" alt="{{$product->name}}">
+        <img src="{{ Storage::url($product->image) }}" alt="{{ $product->name }}">
         <div class="caption">
 
             <h3>{{ $product->name }}</h3>
@@ -22,8 +22,8 @@
                         </form>
                     </div>
                     <div class="col-sm-6">
-                        <a href="{{ route('product', [$product->category, $product]) }}"
-                            class="btn btn-default" role="button">Подробнее</a>
+                        <a href="{{ route('product', [$product->category, $product]) }}" class="btn btn-default"
+                            role="button">Подробнее</a>
                     </div>
                 </div>
 
