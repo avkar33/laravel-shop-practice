@@ -29,10 +29,10 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li @if (Route::currentRouteNamed('index')) class="active" @endif><a href="{{ route('index') }}">Все товары</a></li>
-                    <li @if (Route::currentRouteNamed('categor*')) class="active" @endif><a href="{{ route('categories') }}">Категории</a>
+                    <li @routeactive('index')><a href="{{ route('index') }}">Все товары</a></li>
+                    <li @routeactive('categories')><a href="{{ route('categories') }}">Категории</a>
                     </li>
-                    <li><a href="{{ route('basket') }}">В корзину</a></li>
+                    <li @routeactive('basket')><a href="{{ route('basket') }}">В корзину</a></li>
                     <li><a href="/reset">Сбросить проект в начальное состояние</a></li>
                     <li><a href="/locale/en">en</a></li>
 
@@ -53,15 +53,15 @@
                         <li><a href="{{ route('register') }}">Регистрация</a></li>
                     @endguest
                     @auth
-                    <li class="nav-item">
-                        <a href="{{ route('dashboard') }}">Панель администраторы</a>
-                    </li>
-                    <li class="nav-item"> 
-                        <form action="{{ route('logout') }}" method="POST">
-                            @csrf
-                            <button type="submit">Выйти</button>
-                        </form>
-                    </li>
+                        <li class="nav-item">
+                            <a href="{{ route('orders.index') }}">Панель администраторы</a>
+                        </li>
+                        <li class="nav-item">
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button type="submit">Выйти</button>
+                            </form>
+                        </li>
                     @endauth
                 </ul>
             </div>

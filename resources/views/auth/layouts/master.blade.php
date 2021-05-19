@@ -31,10 +31,10 @@
 
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="{{route('categories.index')}}">Категории</a></li>
-                        <li><a href="{{route('products.index')}}">Товары</a>
+                        <li @routeactive('categories.index')><a href="{{route('categories.index')}}">Категории</a></li>
+                        <li @routeactive('products.index')><a href="{{route('products.index')}}">Товары</a>
                         </li>
-                        <li><a href="{{route('dashboard')}}">Заказы</a></li>
+                        <li @routeactive('orders.index')><a href="{{route('orders.index')}}">Заказы</a></li>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
