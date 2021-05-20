@@ -6,6 +6,7 @@ use App\Http\Controllers\BasketController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Person\PersonOrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,12 +28,17 @@ Auth::routes([
 
 Route::get('/', [MainController::class, 'index'])->name('index');
 
-Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
-    Route::group(['middleware' => 'is_admin'], function () {
-        Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+Route::group(['middleware' => 'auth'], function () {
+    Route::group([
+        'prefix' => 'person',
+        'as' => 'person.',
+    ], function () {
+        Route::get('/orders', [PersonOrderController::class, 'index'])->name('orders.index');
+        Route::get('/orders/{order}', [PersonOrderController::class, 'show'])->name('orders.show');
     });
     Route::resource('categories', CategoryController::class);
     Route::resource('products', ProductController::class);
+});
 });
 
 
