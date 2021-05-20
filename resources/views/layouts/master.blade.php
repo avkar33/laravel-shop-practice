@@ -53,9 +53,16 @@
                         <li><a href="{{ route('register') }}">Регистрация</a></li>
                     @endguest
                     @auth
-                        <li class="nav-item">
-                            <a href="{{ route('orders.index') }}">Панель администраторы</a>
-                        </li>
+                        @admin
+                            <li class="nav-item">
+                                <a href="{{ route('orders.index') }}">Панель администраторы</a>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a href="{{ route('person.orders.index') }}">Мои заказы</a>
+                            </li>
+                        @endadmin
+
                         <li class="nav-item">
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf

@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\BasketController;
-use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Person\PersonOrderController;
 
@@ -36,9 +36,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/orders', [PersonOrderController::class, 'index'])->name('orders.index');
         Route::get('/orders/{order}', [PersonOrderController::class, 'show'])->name('orders.show');
     });
-    Route::resource('categories', CategoryController::class);
-    Route::resource('products', ProductController::class);
-});
+    Route::group(['middleware' => 'is_admin', 'prefix' => 'admin'], function () {
+        Route::resource('orders', OrderController::class)->only('index', 'show');
+        Route::resource('categories', CategoryController::class);
+        Route::resource('products', ProductController::class);
+    });
 });
 
 

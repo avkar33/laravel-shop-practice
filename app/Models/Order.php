@@ -31,6 +31,7 @@ class Order extends Model
             $this->name = $name;
             $this->phone = $phone;
             $this->user_id = $userId;
+            $this->status = 1;
             $this->save();
             session()->forget('orderId');
             return true;
