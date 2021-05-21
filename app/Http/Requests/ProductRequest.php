@@ -25,7 +25,7 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'code' => 'required|min:3|max:10|unique:products,code',
+            'code' => 'required|min:3|max:20|unique:products,code',
             'name' => 'required|min:3|max:100',
             'description' => 'required|min:10|max:100',
             'price' => 'required|numeric|min:1'
