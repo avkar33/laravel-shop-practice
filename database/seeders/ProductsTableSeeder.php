@@ -22,6 +22,9 @@ class ProductsTableSeeder extends Seeder
                 'price' => '71990',
                 'category_id' => 1,
                 'image' => 'products/iphone_x.jpg',
+                'hit' => 1,
+                'new' => 1,
+                'recommend' => 1,
             ],
             [
                 'name' => 'iPhone X 256GB',
@@ -30,6 +33,9 @@ class ProductsTableSeeder extends Seeder
                 'price' => '89990',
                 'category_id' => 1,
                 'image' => 'products/iphone_x_silver.jpg',
+                'hit' => 0,
+                'new' => 1,
+                'recommend' => 0,
             ],
             [
                 'name' => 'HTC One S',
@@ -38,6 +44,9 @@ class ProductsTableSeeder extends Seeder
                 'price' => '12490',
                 'category_id' => 1,
                 'image' => 'products/htc_one_s.png',
+                'hit' => 0,
+                'new' => 0,
+                'recommend' => 1,
             ],
             [
                 'name' => 'iPhone 5SE',
@@ -46,6 +55,9 @@ class ProductsTableSeeder extends Seeder
                 'price' => '17221',
                 'category_id' => 1,
                 'image' => 'products/iphone_5.jpg',
+                'hit' => 0,
+                'new' => 0,
+                'recommend' => 0,
             ],
             [
                 'name' => 'Наушники Beats Audio',
@@ -54,6 +66,9 @@ class ProductsTableSeeder extends Seeder
                 'price' => '20221',
                 'category_id' => 2,
                 'image' => 'products/beats.jpg',
+                'hit' => 0,
+                'new' => 0,
+                'recommend' => 0,
             ],
             [
                 'name' => 'Камера GoPro',
@@ -62,6 +77,9 @@ class ProductsTableSeeder extends Seeder
                 'price' => '12000',
                 'category_id' => 2,
                 'image' => 'products/gopro.jpg',
+                'hit' => 0,
+                'new' => 0,
+                'recommend' => 0,
             ],
             [
                 'name' => 'Камера Panasonic HC-V770',
@@ -70,6 +88,9 @@ class ProductsTableSeeder extends Seeder
                 'price' => '27900',
                 'category_id' => 2,
                 'image' => 'products/video_panasonic.jpg',
+                'hit' => 1,
+                'new' => 1,
+                'recommend' => 0,
             ],
             [
                 'name' => 'Кофемашина DeLongi',
@@ -78,6 +99,9 @@ class ProductsTableSeeder extends Seeder
                 'price' => '25200',
                 'category_id' => 3,
                 'image' => 'products/delongi.jpg',
+                'hit' => 1,
+                'new' => 0,
+                'recommend' => 0,
             ],
             [
                 'name' => 'Холодильник Haier',
@@ -86,6 +110,9 @@ class ProductsTableSeeder extends Seeder
                 'price' => '40200',
                 'category_id' => 3,
                 'image' => 'products/haier.jpg',
+                'hit' => 1,
+                'new' => 0,
+                'recommend' => 1,
             ],
             [
                 'name' => 'Блендер Moulinex',
@@ -94,6 +121,9 @@ class ProductsTableSeeder extends Seeder
                 'price' => '4200',
                 'category_id' => 3,
                 'image' => 'products/moulinex.jpg',
+                'hit' => 0,
+                'new' => 1,
+                'recommend' => 0,
             ],
             [
                 'name' => 'Мясорубка Bosch',
@@ -102,6 +132,9 @@ class ProductsTableSeeder extends Seeder
                 'price' => '9200',
                 'category_id' => 3,
                 'image' => 'products/bosch.jpg',
+                'hit' => 0,
+                'new' => 1,
+                'recommend' => 0,
             ],
         ]);
     }
