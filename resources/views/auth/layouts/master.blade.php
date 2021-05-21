@@ -35,6 +35,7 @@
                         <li @routeactive('products.index')><a href="{{route('products.index')}}">Товары</a>
                         </li>
                         <li @routeactive('orders.index')><a href="{{route('orders.index')}}">Заказы</a></li>
+                        <li><a href="{{route('admin.reset')}}">Сбросить проект в начальное состояние</a></li>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">

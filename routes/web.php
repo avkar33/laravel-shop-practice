@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Person\PersonOrderController;
+use App\Http\Controllers\ResetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,7 @@ Auth::routes([
 
 ]);
 
+
 Route::get('/', [MainController::class, 'index'])->name('index');
 
 Route::group(['middleware' => 'auth'], function () {
@@ -40,6 +42,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('orders', OrderController::class)->only('index', 'show');
         Route::resource('categories', CategoryController::class);
         Route::resource('products', ProductController::class);
+        Route::get('reset', [ResetController::class, 'reset'])->name('admin.reset');
     });
 });
 
