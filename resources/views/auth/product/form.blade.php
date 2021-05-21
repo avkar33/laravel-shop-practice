@@ -23,28 +23,26 @@
                 <div class="input-group row">
                     <label for="code" class="col-sm-2 col-form-label">Код: </label>
                     <div class="col-sm-6">
-                        @error('code')
-                            <div class="aler alert-danger">{{ $message }}</div>
-                        @enderror
+                        @include('auth.layouts.error', ['fieldName' =>'code'])
                         <input type="text" class="form-control" name="code" id="code"
-                            value="{{old('code', isset($product) ? $product->code : null)}}">
+                            value="{{ old('code', isset($product) ? $product->code : null) }}">
                         </div>
                     </div>
                     <br>
                     <div class="input-group row">
                         <label for="name" class="col-sm-2 col-form-label">Название: </label>
                         <div class="col-sm-6">
-                            @error('name')
-                                <div class="aler alert-danger">{{ $message }}</div>
-                            @enderror
+                        @include('auth.layouts.error', ['fieldName' =>'name'])
                             <input type="text" class="form-control" name="name" id="name"
-                                value="{{old('name', isset($product) ? $product->name : null)}}">
+                            value="{{ old('name', isset($product) ? $product->name : null) }}">
                             </div>
                         </div>
                         <br>
                         <div class="input-group row">
                             <label for="category_id" class="col-sm-3 col-form-label">Категория: </label>
                             <div class="col-sm-6">
+                        @include('auth.layouts.error', ['fieldName' =>'category_id'])
+
                                 <select name="category_id" id="category_id" class="form-control">
                                     @foreach ($categories as $category)
 
@@ -57,11 +55,9 @@
                         <div class="input-group row">
                             <label for="description" class="col-sm-2 col-form-label">Описание: </label>
                             <div class="col-sm-6">
-                                @error('description')
-                                    <div class="aler alert-danger">{{ $message }}</div>
-                                @enderror
+                        @include('auth.layouts.error', ['fieldName' =>'description'])
                                 <textarea name="description" id="description" cols="72"
-                                    rows="7">{{old('description', isset($product) ? $product->description : null)}}</textarea>
+                            rows="7">{{ old('description', isset($product) ? $product->description : null) }}</textarea>
                                 </div>
                             </div>
                             <br>
@@ -77,9 +73,7 @@
                             <div class="input-group row">
                                 <label for="price" class="col-sm-2 col-form-label">Цена: </label>
                                 <div class="col-sm-6">
-                                    @error('price')
-                                        <div class="aler alert-danger">{{ $message }}</div>
-                                    @enderror
+                        @include('auth.layouts.error', ['fieldName' =>'price'])
                                     <input type="text" class="form-control" name="price" id="price"
                                         value="@isset($product){{ $product->price }}@endisset">
                                     </div>
