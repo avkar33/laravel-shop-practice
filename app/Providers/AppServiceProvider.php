@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -29,8 +30,10 @@ class AppServiceProvider extends ServiceProvider
             return "<?php echo Route::currentRouteNamed($route) ? 'class=\"active\"' : '' ?>";
         });
 
-        Blade::if('admin', function() {
+        Blade::if('admin', function () {
             return Auth::user()->isAdmin();
         });
+
+        Paginator::useBootstrap();
     }
 }
