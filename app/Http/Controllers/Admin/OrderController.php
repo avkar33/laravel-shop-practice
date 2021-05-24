@@ -15,7 +15,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::where('status', '1')->get();
+        $orders = Order::active()->get();
         return view('auth.order.index', ['orders' => $orders]);
     }
 

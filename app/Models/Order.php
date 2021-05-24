@@ -25,6 +25,11 @@ class Order extends Model
         return $sum;
     }
 
+    public function scopeActive($query)
+    {
+        return $query->where('status', '1');
+    }
+
     public function saveOrder($name, $phone, $userId = 0)
     {
         if ($this->status == 0) {
