@@ -11,7 +11,7 @@ class PersonOrderController extends Controller
 {
     public function index()
     {
-        $orders = Auth::user()->orders()->where('status', '1')->get();
+        $orders = Auth::user()->orders()->active()->get();
         return view('auth.order.person.index', ['orders' => $orders]);
     }
 

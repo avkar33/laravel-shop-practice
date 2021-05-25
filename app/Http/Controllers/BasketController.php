@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Product;
 
 class BasketController extends Controller
 {
@@ -50,6 +51,10 @@ class BasketController extends Controller
         } else {
             session()->flash('warning', 'Ошибка');
         }
+
+        Order::eraseOrderSum();
+        session(['basket_count' => 0]);
+
         return redirect()->route('index');
     }
 
@@ -69,7 +74,12 @@ class BasketController extends Controller
         } else {
             $order->products()->attach($productId);
         }
-        session()->flash('success', 'Товар добавлен');
+        session(['basket_count' => $order->products()->count()]);
+        $product = Product::find($productId);
+
+        Order::changeFullSum($product->price);
+
+        session()->flash('success', "Товар ' {$product->name} ' добавлен");
         return back();
     }
 
@@ -88,7 +98,14 @@ class BasketController extends Controller
             $pivotRow->count--;
             $pivotRow->update();
         }
-        session()->flash('warning', 'Товар удалён');
+        session(['basket_count' => $order->products()->count()]);
+
+        $product = Product::find($productId);
+
+        Order::changeFullSum(-$product->price);
+
+        session()->flash('warning', "Товар ' {$product->name} ' удалён");
+
         return redirect()->route('basket');
     }
 }

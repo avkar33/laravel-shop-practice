@@ -32,7 +32,7 @@
                     <li @routeactive('index')><a href="{{ route('index') }}">Все товары</a></li>
                     <li @routeactive('categories')><a href="{{ route('categories') }}">Категории</a>
                     </li>
-                    <li @routeactive('basket')><a href="{{ route('basket') }}">В корзину</a></li>
+                    <li @routeactive('basket')><a href="{{ route('basket') }}">В корзину ({{session('basket_count', 0)}})</a></li>
                     <li><a href="/locale/en">en</a></li>
 
                     <li class="dropdown">
