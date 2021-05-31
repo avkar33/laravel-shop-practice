@@ -23,6 +23,7 @@ class ResetController extends Controller
                 Storage::put($file, Storage::disk('reset')->get($file));
             }
         }
+        session()->forget('orderId');
         session()->flash('success', 'Все данные сброшены');
         return redirect()->route('index');
     }
