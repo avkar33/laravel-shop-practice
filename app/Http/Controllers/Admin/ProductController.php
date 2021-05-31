@@ -57,8 +57,9 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($productCode)
     {
+        $product = Product::withTrashed()->byCode($productCode)->firstOrFail();
         return view('auth.product.show', ['product' => $product]);
     }
 

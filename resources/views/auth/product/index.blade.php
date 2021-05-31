@@ -42,7 +42,7 @@
                         <div class="btn-group" role="group">
                             <form action="{{ route('products.destroy', $product) }}" method="POST">
                                 <a class="btn btn-success" type="button"
-                                   href="{{ route('products.show', $product) }}">Открыть</a>
+                                   href="{{ route('products.show', $product->code) }}">Открыть</a>
                                 <a class="btn btn-warning" type="button"
                                    href="{{ route('products.edit', $product) }}">Редактировать</a>
                                 @csrf

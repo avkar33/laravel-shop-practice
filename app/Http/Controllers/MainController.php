@@ -39,8 +39,9 @@ class MainController extends Controller
         $category = Category::where('code', $code)->firstOrFail();
         return view('category', ['category' => $category]);
     }
-    public function product($category, Product $product)
+    public function product($categoryCode,  $productCode)
     {
+        $product = Product::byCode($productCode)->firstOrFail();
         return view('product', ['product' => $product]);
     }
 }

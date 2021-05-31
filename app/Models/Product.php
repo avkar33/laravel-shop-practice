@@ -5,12 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = ['name', 'code', 'price', 'category_id', 'description', 'image', 'new', 'hit', 'recommend', 'count'];
+
+    public function scopeByCode($query, $code)
+    {
+        return $query->where('code', $code);
+    }
 
     public function category()
     {
@@ -24,7 +30,7 @@ class Product extends Model
 
     public function isAvailable()
     {
-        return $this->count > 0;
+        return !$this->trashed() && $this->count > 0;
     }
 
     public function scopeHit($query)

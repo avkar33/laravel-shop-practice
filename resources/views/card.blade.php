@@ -36,7 +36,7 @@
                         </form>
                     </div>
                     <div class="col-sm-6">
-                        <a href="{{ route('product', [$product->category, $product]) }}" class="btn btn-default"
+                        <a href="{{ route('product', [$product->category->code, $product->code]) }}" class="btn btn-default"
                             role="button">Подробнее</a>
                     </div>
                 </div>
