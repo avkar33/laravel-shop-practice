@@ -78,6 +78,13 @@
                             value="{{ old('price', isset($product) ? $product->price : null) }}">
                         </div>
                     </div>
+                    <label for="price" class="col-sm-2 col-form-label">Количество: </label>
+                    <div class="col-sm-6">
+                        @include('auth.layouts.error', ['fieldName' =>'count'])
+                        <input type="text" class="form-control" name="count" id="count"
+                            value="{{ old('count', isset($product) ? $product->count : null) }}">
+                        </div>
+                    </div>
                     @foreach (['hit' => 'Хит', 'new' => 'Новинка', 'recommend' => 'Рекомендуемые'] as $field => $title)
                         <div class="input-group form-check">
                             <label for="{{ $field }}" class="form-check-label">{{ $title }}: </label>

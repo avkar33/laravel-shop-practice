@@ -40,6 +40,10 @@
                     <td>{{ $product->category->name }}</td>
                 </tr>
                 <tr>
+                    <td>Количество</td>
+                    <td>{{ $product->count}}</td>
+                </tr>
+                <tr>
                     <td>Лейблы</td>
                     <td>@if ($product->isNew())
                         <span class="badge badge-success">Новинка</span>

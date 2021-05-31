@@ -3,7 +3,7 @@
 @section('title', 'Товары')
 
 @section('content')
-    <div class="col-md-12">
+    <div class="col">
         <h1>Товары</h1>
         <table class="table">
             <tbody>
@@ -24,6 +24,9 @@
                     Цена
                 </th>
                 <th>
+                    Количество
+                </th>
+                <th>
                     Действия
                 </th>
             </tr>
@@ -34,6 +37,7 @@
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->category->name }}</td>
                     <td>{{ $product->price }}</td>
+                    <td>{{ $product->count }}</td>
                     <td>
                         <div class="btn-group" role="group">
                             <form action="{{ route('products.destroy', $product) }}" method="POST">

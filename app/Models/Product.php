@@ -10,7 +10,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'code', 'price', 'category_id', 'description', 'image', 'new', 'hit', 'recommend'];
+    protected $fillable = ['name', 'code', 'price', 'category_id', 'description', 'image', 'new', 'hit', 'recommend', 'count'];
 
     public function category()
     {
@@ -20,6 +20,11 @@ class Product extends Model
     public function getPriceForCount()
     {
         return $this->price * $this->pivot->count;
+    }
+
+    public function isAvailable()
+    {
+        return $this->count > 0;
     }
 
     public function scopeHit($query)

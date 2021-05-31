@@ -25,6 +25,7 @@ class ProductsTableSeeder extends Seeder
                 'hit' => 1,
                 'new' => 1,
                 'recommend' => 1,
+                'count' => 2,
             ],
             [
                 'name' => 'iPhone X 256GB',
@@ -36,6 +37,7 @@ class ProductsTableSeeder extends Seeder
                 'hit' => 0,
                 'new' => 1,
                 'recommend' => 0,
+                'count' => 0,
             ],
             [
                 'name' => 'HTC One S',
@@ -47,6 +49,8 @@ class ProductsTableSeeder extends Seeder
                 'hit' => 0,
                 'new' => 0,
                 'recommend' => 1,
+                'count' => 2,
+
             ],
             [
                 'name' => 'iPhone 5SE',
@@ -58,6 +62,8 @@ class ProductsTableSeeder extends Seeder
                 'hit' => 0,
                 'new' => 0,
                 'recommend' => 0,
+                'count' => 0,
+
             ],
             [
                 'name' => 'Наушники Beats Audio',
@@ -69,6 +75,8 @@ class ProductsTableSeeder extends Seeder
                 'hit' => 0,
                 'new' => 0,
                 'recommend' => 0,
+                'count' => 8,
+
             ],
             [
                 'name' => 'Камера GoPro',
@@ -80,6 +88,8 @@ class ProductsTableSeeder extends Seeder
                 'hit' => 0,
                 'new' => 0,
                 'recommend' => 0,
+                'count' => 1,
+
             ],
             [
                 'name' => 'Камера Panasonic HC-V770',
@@ -91,6 +101,7 @@ class ProductsTableSeeder extends Seeder
                 'hit' => 1,
                 'new' => 1,
                 'recommend' => 0,
+                'count' => 0,
             ],
             [
                 'name' => 'Кофемашина DeLongi',
@@ -102,6 +113,8 @@ class ProductsTableSeeder extends Seeder
                 'hit' => 1,
                 'new' => 0,
                 'recommend' => 0,
+                'count' => 2,
+
             ],
             [
                 'name' => 'Холодильник Haier',
@@ -113,6 +126,8 @@ class ProductsTableSeeder extends Seeder
                 'hit' => 1,
                 'new' => 0,
                 'recommend' => 1,
+                'count' => 5,
+
             ],
             [
                 'name' => 'Блендер Moulinex',
@@ -124,6 +139,7 @@ class ProductsTableSeeder extends Seeder
                 'hit' => 0,
                 'new' => 1,
                 'recommend' => 0,
+                'count' => 10,
             ],
             [
                 'name' => 'Мясорубка Bosch',
@@ -135,6 +151,7 @@ class ProductsTableSeeder extends Seeder
                 'hit' => 0,
                 'new' => 1,
                 'recommend' => 0,
+                'count' => 2,
             ],
         ]);
     }
