@@ -51,7 +51,13 @@ class BasketController extends Controller
         } else {
             session()->flash('warning', 'Ошибка');
         }
-
+        foreach ($order->products as $product) {
+            if ($product->pivot->count > $product->count) {
+                session()->flash('warning', "Товара ' {$product->name} ' не достаточно на складе");
+                return redirect()->route('basket');
+            }
+            $product->reduceCount($product->pivot->count);
+        }
         Order::eraseOrderSum();
         session(['basket_count' => 0]);
 
@@ -67,15 +73,19 @@ class BasketController extends Controller
         } else {
             $order = Order::find($orderId);
         }
+        $product = Product::find($productId);
         if ($order->products->contains($productId)) {
             $pivotRow = $order->products()->where('product_id', $productId)->first()->pivot;
+            if ($pivotRow->count + 1 > $product->count) {
+                session()->flash('warning', "Товара ' {$product->name} ' не достаточно на складе");
+                return back();
+            }
             $pivotRow->count++;
             $pivotRow->update();
         } else {
             $order->products()->attach($productId);
         }
         session(['basket_count' => $order->products()->count()]);
-        $product = Product::find($productId);
 
         Order::changeFullSum($product->price);
 

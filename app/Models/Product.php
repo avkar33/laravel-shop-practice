@@ -17,7 +17,11 @@ class Product extends Model
     {
         return $query->where('code', $code);
     }
-
+    public function reduceCount($count)
+    {
+        $this->count =  $this->count > 1 ? $this->count - $count : 0;
+        $this->save();
+    }
     public function category()
     {
         return $this->belongsTo(Category::class);
