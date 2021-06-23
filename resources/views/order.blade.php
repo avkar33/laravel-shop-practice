@@ -34,7 +34,7 @@
                             <label for="name" class="control-label col-lg-offset-3 col-lg-2">Email: </label>
                             <div class="col-lg-4">
                                 <input type="text" name="email" id="email"
-                                    value="{{ Auth::check() ? Auth::user()->email : '' }}" class="form-control">
+                                    value="{{ Auth::check() ? Auth::user()->email : '' }}" class="form-control" required>
                             </div>
                         </div>
                     </div>

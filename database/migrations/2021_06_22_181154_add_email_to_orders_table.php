@@ -14,7 +14,7 @@ class AddEmailToOrdersTable extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->string('email')->after('phone');
+            $table->string('email')->nullable()->after('phone');
         });
     }
 
