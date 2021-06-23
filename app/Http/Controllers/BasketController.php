@@ -22,7 +22,7 @@ class BasketController extends Controller
 
     public function basketConfirm(Request $request)
     {
-        (new Basket())->confirmOrder($request->name, $request->phone);
+        (new Basket())->confirmOrder($request->name, $request->phone, $request->email);
         return redirect()->route('index');
     }
 

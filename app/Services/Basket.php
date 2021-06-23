@@ -27,11 +27,10 @@ class Basket
         return $this->order;
     }
 
-    public function confirmOrder($name, $phone)
+    public function confirmOrder($name, $phone, $email)
     {
         $userId = Auth::id() ?? 0;
-
-        $success = $this->order->saveOrder($name, $phone, $userId);
+        $success = $this->order->saveOrder($name, $phone, $email, $userId);
         if ($success) {
             session()->flash('success', 'Заказ оформлен');
         } else {

@@ -9,7 +9,8 @@
                 <div class="panel">
                     <h1>Заказ №{{ $order->id }}</h1>
                     <p>Заказчик: <b>{{ $order->name }}</b></p>
-                    <p>Номер телефона: <b>{{ $order->phomne }}</b></p>
+                    <p>Номер телефона: <b>{{ $order->phone }}</b></p>
+                    <p>email: <b>{{$order->email}}</b></p>
                     <table class="table table-striped">
                         <thead>
                         <tr>

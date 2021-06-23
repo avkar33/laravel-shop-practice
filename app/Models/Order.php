@@ -46,15 +46,16 @@ class Order extends Model
         return $query->where('status', '1');
     }
 
-    public function saveOrder($name, $phone, $userId = 0)
+    public function saveOrder($name, $phone, $email, $userId = 0)
     {
         if ($this->status == 0) {
             $this->name = $name;
             $this->phone = $phone;
+            $this->email = $email;
             $this->user_id = $userId;
             $this->status = 1;
             $this->save();
-            session()->forget('orderId');
+            session()->forget('orderId'); 
             return true;
         } else {
             return false;

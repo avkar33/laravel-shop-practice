@@ -18,6 +18,9 @@
                         Телефон
                     </th>
                     <th>
+                        email
+                    </th>
+                    <th>
                         Когда отправлен
                     </th>
                     <th>
@@ -32,6 +35,7 @@
                         <td>{{ $order->id }}</td>
                         <td>{{ $order->name }}</td>
                         <td>{{ $order->phone }}</td>
+                        <td>{{ $order->email }}</td>
                         <td>{{ $order->created_at->format('H:i d/m/Y') }}</td>
                         <td>{{ $order->calculateFullSum() }} руб.</td>
                         <td>
