@@ -5,6 +5,8 @@ namespace App\Services;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderCreated;
 
 class Basket
 {
@@ -43,6 +45,7 @@ class Basket
             }
             $product->reduceCount($product->pivot->count);
         }
+        Mail::to($email)->send(new OrderCreated($name ?? '', $this->getOrder()));
         Order::eraseOrderSum();
         session(['basket_count' => 0]);
     }
