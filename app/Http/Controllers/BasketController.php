@@ -25,7 +25,7 @@ class BasketController extends Controller
     {
         (new Basket())->confirmOrder($request->name, $request->phone, $request->email);
         return redirect()->route('index');
-    }request
+    }
 
     public function basketAdd($productId)
     {
