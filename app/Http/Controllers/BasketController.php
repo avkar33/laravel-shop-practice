@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\Basket;
+use App\Http\Requests\BasketConfirmRequest;
 
 class BasketController extends Controller
 {
@@ -20,7 +21,7 @@ class BasketController extends Controller
         return view('order', ['order' => $order]);
     }
 
-    public function basketConfirm(Request $request)
+    public function basketConfirm(BasketConfirmRequest $request)
     {
         (new Basket())->confirmOrder($request->name, $request->phone, $request->email);
         return redirect()->route('index');

@@ -14,6 +14,7 @@
 
                     <div class="container">
                         <div class="form-group">
+                            @include('auth.layouts.error', ['fieldName' =>'name'])
                             <label for="name" class="control-label col-lg-offset-3 col-lg-2">Имя: </label>
                             <div class="col-lg-4">
                                 <input type="text" name="name" id="name" value="" class="form-control">
@@ -31,6 +32,7 @@
                         <br>
                         <br>
                         <div class="form-group">
+                            @include('auth.layouts.error', ['fieldName' =>'email'])
                             <label for="name" class="control-label col-lg-offset-3 col-lg-2">Email: </label>
                             <div class="col-lg-4">
                                 <input type="text" name="email" id="email"
