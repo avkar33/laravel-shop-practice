@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 
 class MainController extends Controller
 {
@@ -43,5 +44,27 @@ class MainController extends Controller
     {
         $product = Product::byCode($productCode)->firstOrFail();
         return view('product', ['product' => $product]);
+    }
+
+    public function subscribe($productId)
+    {
+        if (Auth::check()) {
+            $user = Auth::user();
+            $user->products()->attach($productId);
+            return redirect()->back()->with('success', 'Подписка оформлена');
+        } else {
+            return redirect()->route('login');
+        }
+    }
+
+    public function unsubscribe($productId)
+    {
+        if (Auth::check()) {
+            $user = Auth::user();
+            $user->products()->detach($productId);
+            return redirect()->back()->with('success', 'Вы отписались');
+        } else {
+            return redirect()->route('login');
+        }
     }
 }

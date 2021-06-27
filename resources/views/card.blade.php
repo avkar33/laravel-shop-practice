@@ -25,19 +25,20 @@
                 <hr>
                 <div class="row justify-content-start">
                     <div class="col-sm-6">
-                        <form action="{{ route('basket-add', $product) }}" method="POST">
-                            @csrf
-                            @if ($product->isAvailable())
+                        @if ($product->isAvailable())
+                            <form action="{{ route('basket-add', $product) }}" method="POST">
+                                @csrf
                                 <button type="submit" class="btn btn-primary" role="button">Добавить в корзину</button>
-                            @else
-                                <div class="alert-danger">Товар не доступен</div>
-                            @endif
+                            </form>
 
-                        </form>
+                        @else
+                            <div class="alert-danger">Товар не доступен.</div>
+                        @endif
+
                     </div>
                     <div class="col-sm-6">
-                        <a href="{{ route('product', [$product->category->code, $product->code]) }}" class="btn btn-default"
-                            role="button">Подробнее</a>
+                        <a href="{{ route('product', [$product->category->code, $product->code]) }}"
+                            class="btn btn-default" role="button">Подробнее</a>
                     </div>
                 </div>
 

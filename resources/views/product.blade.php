@@ -20,14 +20,25 @@
     <p>Цена: <b>{{ $product->price }} ₽</b></p>
     <img src="{{ Storage::url($product->image) }}">
     <p>{{ $product->description }}</p>
-
-    <form action="{{ route('basket-add', $product) }}" method="POST">
-        @csrf
-        @if ($product->isAvailable())
+    @if ($product->isAvailable())
+        <form action="{{ route('basket-add', $product) }}" method="POST">
+            @csrf
             <button type="submit" class="btn btn-success" role="button">Добавить в корзину</button>
-
+        </form>
+    @else
+        <div class="alert-danger">Товар не доступен</div>
+        <br>
+        @if (Auth::user()->products()->find($product->id))
+            <span class="btn-success">Вы подписаны</span>
+            <form method="POST" action="{{ route('unsubscribe', $product->id) }}">
+                @csrf
+                <button type="submit" class="btn btn-danger" role="button">Отписаться</button>
+            </form>
         @else
-            <div class="alert-danger">Товар не доступен</div>
+            <form method="POST" action="{{ route('subscription', $product->id) }}">
+                @csrf
+                <button type="submit" class="btn btn-success" role="button">В желаемое</button>
+            </form>
         @endif
-    </form>
+    @endif
 @endsection

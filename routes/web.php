@@ -63,6 +63,8 @@ Route::group(
     }
 );
 
+Route::post('/subscription/{productId}', [MainController::class, 'subscribe'])->name('subscription');
+Route::post('/unsubscribe/{productId}', [MainController::class, 'unsubscribe'])->name('unsubscribe');
 
 
 Route::get('/categories', [MainController::class, 'categories'])->name('categories');
