@@ -60,6 +60,9 @@
                             <li class="nav-item">
                                 <a href="{{ route('person.orders.index') }}">Мои заказы</a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ route('person.subscribes') }}">Мои подписки</a>
+                            </li>
                         @endadmin
 
                         <li class="nav-item">

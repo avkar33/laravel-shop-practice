@@ -37,6 +37,7 @@ Route::group(['middleware' => 'auth'], function () {
     ], function () {
         Route::get('/orders', [PersonOrderController::class, 'index'])->name('orders.index');
         Route::get('/orders/{order}', [PersonOrderController::class, 'show'])->name('orders.show');
+        Route::get('/subscribes', [MainController::class, 'subscribes'])->name('subscribes');
     });
     Route::group(['middleware' => 'is_admin', 'prefix' => 'admin'], function () {
         Route::resource('orders', OrderController::class)->only('index', 'show');
@@ -65,7 +66,6 @@ Route::group(
 
 Route::post('/subscription/{productId}', [MainController::class, 'subscribe'])->name('subscription');
 Route::post('/unsubscribe/{productId}', [MainController::class, 'unsubscribe'])->name('unsubscribe');
-
 
 Route::get('/categories', [MainController::class, 'categories'])->name('categories');
 Route::get('/{category}', [MainController::class, 'category'])->name('category');

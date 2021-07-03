@@ -67,4 +67,10 @@ class MainController extends Controller
             return redirect()->route('login');
         }
     }
+
+    public function subscribes()
+    {
+        $products = Auth::user()->products()->paginate(6);
+        return view('subscribes', ['products' => $products]);
+    }
 }
