@@ -48,24 +48,16 @@ class MainController extends Controller
 
     public function subscribe($productId)
     {
-        if (Auth::check()) {
-            $user = Auth::user();
-            $user->products()->attach($productId);
-            return redirect()->back()->with('success', 'Подписка оформлена');
-        } else {
-            return redirect()->route('login');
-        }
+        $user = Auth::user();
+        $user->products()->attach($productId);
+        return redirect()->back()->with('success', 'Подписка оформлена');
     }
 
     public function unsubscribe($productId)
     {
-        if (Auth::check()) {
-            $user = Auth::user();
-            $user->products()->detach($productId);
-            return redirect()->back()->with('success', 'Вы отписались');
-        } else {
-            return redirect()->route('login');
-        }
+        $user = Auth::user();
+        $user->products()->detach($productId);
+        return redirect()->back()->with('success', 'Вы отписались');
     }
 
     public function subscribes()

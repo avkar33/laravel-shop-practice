@@ -45,6 +45,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('products', ProductController::class);
         Route::get('reset', [ResetController::class, 'reset'])->name('admin.reset');
     });
+
+    Route::post('subscription/{productId}', [MainController::class, 'subscribe'])->name('subscription');
+    Route::post('unsubscribe/{productId}', [MainController::class, 'unsubscribe'])->name('unsubscribe');
 });
 
 
@@ -64,8 +67,7 @@ Route::group(
     }
 );
 
-Route::post('/subscription/{productId}', [MainController::class, 'subscribe'])->name('subscription');
-Route::post('/unsubscribe/{productId}', [MainController::class, 'unsubscribe'])->name('unsubscribe');
+
 
 Route::get('/categories', [MainController::class, 'categories'])->name('categories');
 Route::get('/{category}', [MainController::class, 'category'])->name('category');
