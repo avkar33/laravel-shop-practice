@@ -69,3 +69,21 @@ span.badge.badge-danger {
   color: #212529;
   background-color: #ffc107;
 }
+
+.btn.btn-primary {
+  margin-top: 0px;
+  padding: 0px;
+  height: 25px;
+  text-align: center;
+}
+
+.btn.btn-default {
+  height: 25px;
+  padding: 0px;
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+.caption .row {
+  max-height: 40px;
+}
