@@ -33,20 +33,12 @@
 
                         @else
                             <div class="alert-danger">Товар не доступен.</div>
-                            @if (Auth::user())
-
-                            @else
-                                <form method="POST" action="{{ route('subscription', $product->id) }}">
-                                    @csrf
-                                    <button type="submit" class="btn btn-success" role="button">В желаемое</button>
-                                </form>
-                            @endif
                         @endif
                         <a href="{{ route('product', [$product->category->code, $product->code]) }}"
                             class="btn btn-default" role="button">Подробнее</a>
                     </div>
                     <div class="col-sm-6">
-                        @if (Auth::user()->products()->find($product->id))
+                        @if (Auth::user() && Auth::user()->products()->find($product->id))
                             <span class="btn-success">Вы подписаны</span>
                             <form method="POST" action="{{ route('unsubscribe', $product->id) }}">
                                 @csrf
