@@ -25,15 +25,15 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="{{ route('index') }}">Интернет Магазин</a>
+                <a class="navbar-brand" href="{{ route('index') }}">{{__('main.online_shop')}}</a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li @routeactive('index')><a href="{{ route('index') }}">Все товары</a></li>
-                    <li @routeactive('categories')><a href="{{ route('categories') }}">Категории</a>
+                    <li @routeactive('index')><a href="{{ route('index') }}">{{__('main.all_products')}}</a></li>
+                    <li @routeactive('categories')><a href="{{ route('categories') }}">{{__('main.categories')}}</a>
                     </li>
-                    <li @routeactive('basket')><a href="{{ route('basket') }}">В корзину ({{session('basket_count', 0)}})</a></li>
-                    <li><a href="/locale/en">en</a></li>
+                    <li @routeactive('basket')><a href="{{ route('basket') }}">{{__('main.basket')}} ({{session('basket_count', 0)}})</a></li>
+                    <li><a href="{{route('locale', __('main.set_lang'))}}">{{__('main.set_lang')}}</a></li>
 
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"

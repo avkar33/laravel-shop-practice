@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\App;
 
 class MainController extends Controller
 {
@@ -64,5 +65,12 @@ class MainController extends Controller
     {
         $products = Auth::user()->products()->paginate(6);
         return view('subscribes', ['products' => $products]);
+    }
+
+    public function changeLocale($locale)
+    {
+        session(['locale' => $locale]);
+        App::setLocale($locale);
+        return redirect()->back();
     }
 }
