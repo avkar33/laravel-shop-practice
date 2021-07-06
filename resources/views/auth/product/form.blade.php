@@ -37,6 +37,14 @@
                             value="{{ old('name', isset($product) ? $product->name : null) }}">
                     </div>
                 </div>
+                <div class="input-group row">
+                    <label for="name_en" class="col-sm-2 col-form-label">Название en: </label>
+                    <div class="col-sm-6">
+                        @include('auth.layouts.error', ['fieldName' =>'name_en'])
+                        <input type="text" class="form-control" name="name_en" id="name_en"
+                            value="{{ old('name_en', isset($product) ? $product->name_en : null) }}">
+                    </div>
+                </div>
                 <br>
                 <div class="input-group row">
                     <label for="category_id" class="col-sm-3 col-form-label">Категория: </label>
@@ -57,7 +65,15 @@
                     <div class="col-sm-6">
                         @include('auth.layouts.error', ['fieldName' =>'description'])
                         <textarea name="description" id="description" cols="72"
-                            rows="7">{{ old('description', isset($product) ? $product->description : null) }}</textarea>
+                            rows="7">{{ old('description', isset($product) ? $product->__('description') : null) }}</textarea>
+                    </div>
+                </div>
+                <div class="input-group row">
+                    <label for="description_en" class="col-sm-2 col-form-label">Описание en: </label>
+                    <div class="col-sm-6">
+                        @include('auth.layouts.error', ['fieldName' =>'description_en'])
+                        <textarea name="description_en" id="description_en" cols="72"
+                            rows="7">{{ old('description_en', isset($product) ? $product->description_en : null) }}</textarea>
                     </div>
                 </div>
                 <br>

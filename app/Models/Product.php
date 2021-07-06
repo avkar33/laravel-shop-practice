@@ -7,12 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\User;
+use App\Models\Traits\Translatable;
 
 class Product extends Model
 {
     use HasFactory, SoftDeletes;
+    use Translatable;
 
-    protected $fillable = ['name', 'code', 'price', 'category_id', 'description', 'image', 'new', 'hit', 'recommend', 'count'];
+    protected $fillable = [
+        'name', 'name_en', 'code', 'price', 'category_id',
+        'description', 'description_en', 'image', 'new', 'hit', 'recommend', 'count'
+    ];
 
     public function scopeByCode($query, $code)
     {
